@@ -128,7 +128,7 @@ class _LegacyMultiCall(object):
                 for argname in hook_impl.argnames:
                     if argname not in caller_kwargs:
                         raise HookCallError(
-                            "hook call must provide argument %r" % (argname,)
+                            "hook call must provide argument {!r}".format(argname)
                         )
             if hook_impl.hookwrapper:
                 return _wrapped_call(hook_impl.function(*args), self.execute)
@@ -145,7 +145,7 @@ class _LegacyMultiCall(object):
         status = "%d meths" % (len(self.hook_impls),)
         if hasattr(self, "results"):
             status = ("%d results, " % len(self.results)) + status
-        return "<_MultiCall %s, kwargs=%r>" % (status, self.caller_kwargs)
+        return "<_MultiCall {}, kwargs={!r}>".format(status, self.caller_kwargs)
 
 
 def _legacymulticall(hook_impls, caller_kwargs, firstresult=False):
@@ -173,7 +173,7 @@ def _multicall(hook_impls, caller_kwargs, firstresult=False):
                     for argname in hook_impl.argnames:
                         if argname not in caller_kwargs:
                             raise HookCallError(
-                                "hook call must provide argument %r" % (argname,)
+                                "hook call must provide argument {!r}".format(argname)
                             )
 
                 if hook_impl.hookwrapper:

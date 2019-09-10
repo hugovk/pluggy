@@ -131,5 +131,5 @@ def test_repr():
     plugin = Plugin()
     pname = pm.register(plugin)
     assert repr(pm.hook.myhook._nonwrappers[0]) == (
-        "<HookImpl plugin_name=%r, plugin=%r>" % (pname, plugin)
+        "<HookImpl plugin_name={!r}, plugin={!r}>".format(pname, plugin)
     )

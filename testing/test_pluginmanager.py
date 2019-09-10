@@ -146,7 +146,7 @@ def test_register(pm):
     assert my in pm.get_plugins()
     my2 = MyPlugin()
     pm.register(my2)
-    assert set([my, my2]).issubset(pm.get_plugins())
+    assert {my, my2}.issubset(pm.get_plugins())
 
     assert pm.is_registered(my)
     assert pm.is_registered(my2)

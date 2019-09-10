@@ -233,7 +233,7 @@ class _HookCaller(object):
 
         if remove(self._wrappers) is None:
             if remove(self._nonwrappers) is None:
-                raise ValueError("plugin %r not found" % (plugin,))
+                raise ValueError("plugin {!r} not found".format(plugin))
 
     def get_hookimpls(self):
         # Order is important for _hookexec
@@ -267,16 +267,14 @@ class _HookCaller(object):
             self.multicall = _legacymulticall
 
     def __repr__(self):
-        return "<_HookCaller %r>" % (self.name,)
+        return "<_HookCaller {!r}>".format(self.name)
 
     def __call__(self, *args, **kwargs):
         if args:
             raise TypeError("hook calling supports only keyword arguments")
         assert not self.is_historic()
         if self.spec and self.spec.argnames:
-            notincall = (
-                set(self.spec.argnames) - set(["__multicall__"]) - set(kwargs.keys())
-            )
+            notincall = set(self.spec.argnames) - {"__multicall__"} - set(kwargs.keys())
             if notincall:
                 warnings.warn(
                     "Argument(s) {} which are declared in the hookspec "
@@ -345,7 +343,9 @@ class HookImpl(object):
         self.__dict__.update(hook_impl_opts)
 
     def __repr__(self):
-        return "<HookImpl plugin_name=%r, plugin=%r>" % (self.plugin_name, self.plugin)
+        return "<HookImpl plugin_name={!r}, plugin={!r}>".format(
+            self.plugin_name, self.plugin
+        )
 
 
 class HookSpec(object):

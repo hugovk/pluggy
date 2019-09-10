@@ -199,7 +199,9 @@ class PluginManager(object):
 
         if not names:
             raise ValueError(
-                "did not find any %r hooks in %r" % (self.project_name, module_or_class)
+                "did not find any {!r} hooks in {!r}".format(
+                    self.project_name, module_or_class
+                )
             )
 
     def parse_hookspec_opts(self, module_or_class, name):
@@ -380,13 +382,12 @@ class PluginManager(object):
 if hasattr(inspect, "signature"):
 
     def _formatdef(func):
-        return "%s%s" % (func.__name__, str(inspect.signature(func)))
+        return "{}{}".format(func.__name__, str(inspect.signature(func)))
 
 
 else:
 
     def _formatdef(func):
-        return "%s%s" % (
-            func.__name__,
-            inspect.formatargspec(*inspect.getargspec(func)),
+        return "{}{}".format(
+            func.__name__, inspect.formatargspec(*inspect.getargspec(func))
         )
