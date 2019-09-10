@@ -9,7 +9,7 @@ hookimpl = HookimplMarker("example")
 
 @pytest.fixture
 def hc(pm):
-    class Hooks(object):
+    class Hooks:
         @hookspec
         def he_method1(self, arg):
             pass
@@ -155,7 +155,7 @@ def test_adding_wrappers_ordering_tryfirst(hc, addmeth):
 
 
 def test_hookspec(pm):
-    class HookSpec(object):
+    class HookSpec:
         @hookspec()
         def he_myhook1(arg1):
             pass
@@ -191,7 +191,7 @@ def test_hookrelay_registry(pm):
     """Verify hook caller instances are registered by name onto the relay
     and can be likewise unregistered."""
 
-    class Api(object):
+    class Api:
         @hookspec
         def hello(self, arg):
             "api hook 1"
@@ -201,7 +201,7 @@ def test_hookrelay_registry(pm):
     assert hasattr(hook, "hello")
     assert repr(hook.hello).find("hello") != -1
 
-    class Plugin(object):
+    class Plugin:
         @hookimpl
         def hello(self, arg):
             return arg + 1

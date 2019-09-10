@@ -20,14 +20,14 @@ def MC(methods, kwargs, firstresult=False):
 
 
 def test_call_passing():
-    class P1(object):
+    class P1:
         @hookimpl
         def m(self, __multicall__, x):
             assert len(__multicall__.results) == 1
             assert not __multicall__.hook_impls
             return 17
 
-    class P2(object):
+    class P2:
         @hookimpl
         def m(self, __multicall__, x):
             assert __multicall__.results == []
@@ -47,7 +47,7 @@ def test_keyword_args():
     def f(x):
         return x + 1
 
-    class A(object):
+    class A:
         @hookimpl
         def f(self, x, y):
             return x + y

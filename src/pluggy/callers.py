@@ -17,7 +17,7 @@ class HookCallError(Exception):
     """ Hook was called wrongly. """
 
 
-class _Result(object):
+class _Result:
     def __init__(self, result, excinfo):
         self._result = result
         self._excinfo = excinfo
@@ -87,7 +87,7 @@ def _wrapped_call(wrap_controller, func):
     return call_outcome.get_result()
 
 
-class _LegacyMultiCall(object):
+class _LegacyMultiCall:
     """ execute a call into multiple python functions/methods. """
 
     # XXX note that the __multicall__ argument is supported only

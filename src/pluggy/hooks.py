@@ -7,7 +7,7 @@ import warnings
 from .callers import _legacymulticall, _multicall
 
 
-class HookspecMarker(object):
+class HookspecMarker:
     """ Decorator helper class for marking functions as hook specifications.
 
     You can instantiate it with a project_name to get a decorator.
@@ -55,7 +55,7 @@ class HookspecMarker(object):
             return setattr_hookspec_opts
 
 
-class HookimplMarker(object):
+class HookimplMarker:
     """ Decorator helper class for marking functions as hook implementations.
 
     You can instantiate with a project_name to get a decorator.
@@ -191,14 +191,14 @@ def varnames(func):
     return args, kwargs
 
 
-class _HookRelay(object):
+class _HookRelay:
     """ hook holder object for performing 1:N hook calls where N is the number
     of registered plugins.
 
     """
 
 
-class _HookCaller(object):
+class _HookCaller:
     def __init__(self, name, hook_execute, specmodule_or_class=None, spec_opts=None):
         self.name = name
         self._wrappers = []
@@ -333,7 +333,7 @@ class _HookCaller(object):
                     result_callback(res[0])
 
 
-class HookImpl(object):
+class HookImpl:
     def __init__(self, plugin, plugin_name, function, hook_impl_opts):
         self.function = function
         self.argnames, self.kwargnames = varnames(self.function)
@@ -348,7 +348,7 @@ class HookImpl(object):
         )
 
 
-class HookSpec(object):
+class HookSpec:
     def __init__(self, namespace, name, opts):
         self.namespace = namespace
         self.function = function = getattr(namespace, name)

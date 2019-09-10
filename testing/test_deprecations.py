@@ -32,7 +32,7 @@ def test_callhistoric_proc_deprecated(pm):
     deprecated.
     """
 
-    class P1(object):
+    class P1:
         @hookspec(historic=True)
         @hookimpl
         def m(self, x):
@@ -46,7 +46,7 @@ def test_callhistoric_proc_deprecated(pm):
 
 
 def test_multicall_deprecated(pm):
-    class P1(object):
+    class P1:
         @hookimpl
         def m(self, __multicall__, x):
             pass

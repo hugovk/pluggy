@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import sys
 
 if sys.version_info >= (3, 8):
@@ -26,12 +25,12 @@ master_doc = "index"
 # General information about the project.
 
 project = "pluggy"
-copyright = u"2016, Holger Krekel"
+copyright = "2016, Holger Krekel"
 author = "Holger Krekel"
 
 release = metadata.version(project)
 # The short X.Y version.
-version = u".".join(release.split(".")[:2])
+version = ".".join(release.split(".")[:2])
 
 
 language = None
@@ -59,7 +58,7 @@ html_static_path = ["_static"]
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [(master_doc, "pluggy", u"pluggy Documentation", [author], 1)]
+man_pages = [(master_doc, "pluggy", "pluggy Documentation", [author], 1)]
 
 
 # -- Options for Texinfo output -------------------------------------------
@@ -71,7 +70,7 @@ texinfo_documents = [
     (
         master_doc,
         "pluggy",
-        u"pluggy Documentation",
+        "pluggy Documentation",
         author,
         "pluggy",
         "One line description of project.",
