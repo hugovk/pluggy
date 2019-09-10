@@ -1,9 +1,6 @@
 from pluggy.hooks import varnames
 from pluggy.manager import _formatdef
 
-import sys
-import pytest
-
 
 def test_varnames():
     def f(x):
@@ -50,9 +47,6 @@ def test_varnames_class():
     assert varnames(F) == ((), ())
 
 
-@pytest.mark.skipif(
-    sys.version_info < (3,), reason="Keyword only arguments are Python 3 only"
-)
 def test_varnames_keyword_only():
     # SyntaxError on Python 2, so we exec
     ns = {}

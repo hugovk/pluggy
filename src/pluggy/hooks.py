@@ -136,7 +136,7 @@ else:
         return inspect.getargspec(func)
 
 
-_PYPY3 = hasattr(sys, "pypy_version_info") and sys.version_info.major == 3
+_PYPY3 = hasattr(sys, "pypy_version_info")
 
 
 def varnames(func):
